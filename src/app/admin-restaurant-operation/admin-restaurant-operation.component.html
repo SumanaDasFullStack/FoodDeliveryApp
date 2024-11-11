@@ -1,0 +1,20 @@
+<div>
+<hr/>
+<table border="1">
+    <tr>
+        <th>Restaurant Name</th>
+        <th>Email Id</th>
+        <th>About</th>
+        <th>Timming</th>
+        <th>Rating</th>
+    </tr>
+    <tr *ngFor="let restaurant of restaurants">
+            <td>{{restaurant.name}}</td>
+            <td>{{restaurant.emailId}}</td>
+            <td>{{restaurant.description}}</td>
+            <td>{{restaurant.openTime}} to {{restaurant.closeTime}}</td>
+            <td>{{restaurant.rating}}</td>
+    </tr>
+</table>
+
+</div>

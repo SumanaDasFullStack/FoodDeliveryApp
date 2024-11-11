@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="details">
+    <h3>SignUp</h3>
+    <form [formGroup] ="loginRef" (ngSubmit)="signUp()">
+        <label>EmailId</label>
+        <input type="email" formControlName="emailid"/><br/>
+        <label>Password</label>
+        <input type="password" formControlName="password"/><br/>
+        <div class="selector">
+        <label>TypeOfUser &nbsp; </label>
+        <input type="radio" formControlName="typeofuser" value="admin"/>Admin
+        
+        <input type="radio" formControlName="typeofuser" value="customer"/>User<br/>
+    </div>
+    <br/>
+    <div class="button">
+        <input type="submit" value="SignUp"/>
+        <label>&nbsp;&nbsp;</label>
+        <input type="reset" value="reset"/>
+    </div>
+    </form>
+<br/>
+<span style="color:red">{{msg}}</span>
+<br/>
+<div class="login">
+    <label>Already a User? &nbsp; </label>
+<a routerLink="/login" >Login</a>
+</div>
+</div>
+</div>    

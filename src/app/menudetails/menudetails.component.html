@@ -1,0 +1,47 @@
+<!-- <app-not-found [visible]="!menu" notFoundMessage="Food Not Found" resetLinkText="Back To Homepage"></app-not-found> -->
+
+
+<div *ngIf="menu" class="container">
+    <img [src]="menu.image" [alt]="menu.name" alt="food-name">
+
+    <div class="details">
+        <div class="header">
+            <span class="name">
+                {{menu.name}}
+            </span>
+            <span class="favorite">
+                ❤
+            </span>
+        </div>
+        <!-- <div class="stars">
+            <star-rating [stars]="menu.stars"></star-rating>
+        </div> -->
+
+        <div class="origins">
+            <span >
+                {{menu.category}}
+            </span>
+        </div>
+
+        <div class="tags">
+            <p [ngClass]="{'available': menu.isAvailable, 'not-available': !menu.isAvailable}">
+                {{ menu.isAvailable ? 'Available' : 'Not Available' }}
+              </p>
+        </div>
+
+        <div class="about">
+            <span>
+            <strong>   Details: </strong>{{menu.description}}
+            </span>
+        </div>
+
+        <div class="price">
+            <span>
+                {{menu.price | currency:'INR'}}
+            </span>
+        </div>
+        <button >Add To Cart</button>
+        <!-- <button (click)="addToCart()">Add To Cart</button> -->
+
+    </div>
+</div>

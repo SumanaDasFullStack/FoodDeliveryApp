@@ -1,0 +1,20 @@
+<div>
+    <hr/>
+    <table border="1">
+        <tr>
+            <th>Menu Item</th>
+            <th>Category</th>
+            <th>About</th>
+            <th>Image</th>
+            <th>Price</th>
+        </tr>
+        <tr *ngFor="let m of menu">
+                <td>{{m.name}}</td>
+                <td>{{m.category}}</td>
+                <td>{{m.description}}</td>
+                <td><img src={{m.image}} width="100px" height="100px"/></td>
+                <td>{{m.price}}</td>
+        </tr>
+    </table>
+    
+    </div>

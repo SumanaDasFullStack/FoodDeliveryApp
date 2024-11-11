@@ -1,0 +1,38 @@
+container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 3rem;
+    background-color: aqua;
+}
+details{
+    width: fit-content;
+    align-items: center;
+    
+}
+h3{
+    color: #009743;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20rem;
+}
+selector{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+signup{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

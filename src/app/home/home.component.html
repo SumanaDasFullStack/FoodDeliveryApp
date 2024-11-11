@@ -1,0 +1,32 @@
+<app-search></app-search>
+
+<ul>
+    <li *ngFor="let m of menu" (click)="onFoodItemClick(m.menuId)">
+        <a routerLink>
+        <img src={{m.image}} />
+        <div class="content">
+            <div class="name">
+                {{m.name}}
+            </div>
+            <span class="favourite">
+                ❤
+            </span>
+           
+            <div class="product-item-footer">
+                <div class="origins">
+                    <span >
+                        {{m.category}}
+                    </span>
+                </div>
+                
+            </div>
+            <div class="price">
+                <span>
+                    {{m.price | currency:'INR'}}
+                </span>
+            </div>
+        </div>
+    </a>
+    </li>
+</ul>
+
