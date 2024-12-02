@@ -25,9 +25,13 @@ returnUrl='';
   signIn(): void {
     let login = this.loginRef.value;
     //console.log(login);
-    this.ls.signIn(login).subscribe({
+this.ls.signIn(login).subscribe(() => {
+  this.router.navigateByUrl(this.returnUrl); // After successful login, navigate to the stored return URL
+});
+
+    /* this.ls.signIn(login).subscribe({
       next:(result:any)=> {
-        //console.log(result)
+        console.log("full return "+result)
         
         if(result=="Admin login successfully"){
           console.log("admin url is "+this.returnUrl);
@@ -47,7 +51,7 @@ returnUrl='';
         console.log("SignIn done!")
       }
     })
-    this.loginRef.reset();
+    this.loginRef.reset(); */
   
 }
 

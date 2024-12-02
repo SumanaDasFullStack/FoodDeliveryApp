@@ -3,21 +3,21 @@
     <img src="assets/logo.png" alt="Angular Logo" class="angular-logo"></a>
     <nav>
         <ul>
-          <li>
+          <li *ngIf="!user.emailid">
             <a routerLink="/login">Login</a>
           </li>
 
-          <li class="menu-container">
-            <a routerLink="/customer"></a>
+          <li *ngIf="user.emailid" class="menu-container">
+            <a routerLink="/customer">{{user.emailid}}</a>
             <div class="menu">
               <!-- <a routerLink="/profile">Profile</a>
               <a routerLink="/orders">Orders</a> -->
-              <!-- <a (click)="logout()">Logout</a> -->
+              <a (click)="logout()">Logout</a>
             </div>
           </li>
           
           <li>
-            <a routerLink="/admin">
+            <a routerLink="/cart">
               Cart 
             </a>
           </li>

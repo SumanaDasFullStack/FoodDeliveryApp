@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MenuService } from '../menu.service';
 
 @Component({
   selector: 'app-search',
@@ -18,7 +19,7 @@ export class SearchComponent {
 
   searchTerm = '';
 
-  constructor(activatedRoute: ActivatedRoute, private router:Router) {
+  constructor(private ms:MenuService, activatedRoute: ActivatedRoute, private router:Router) {
     activatedRoute.params.subscribe((params) => {
       if(params['searchTerm'])
       {
@@ -30,11 +31,14 @@ export class SearchComponent {
   search(term: string): void {
     if(term)
     {
+      console.log( this.searchRoute+term);
       // this.router.navigateByUrl('/search/' + term);
       this.router.navigateByUrl(this.searchRoute + term);
+      
     }
     else
     {
+      console.log(this.defaultRoute);
       // this.router.navigateByUrl('/');
       this.router.navigateByUrl(this.defaultRoute);
     }

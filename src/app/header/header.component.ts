@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../login.service';
+import { Login } from '../login';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,15 @@ import { LoginService } from '../login.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
- private loginService!: LoginService;
+  cartQuantity = 0;
+  user!: Login;
+constructor(private loginService: LoginService){
+  loginService.loginObservable.subscribe((newUser)=>{
+this.user=newUser;
+  })
+}
+ 
+
   logout() {
     this.loginService.logout();
   }

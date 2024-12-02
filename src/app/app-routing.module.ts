@@ -9,6 +9,7 @@ import { CustomerRestaurantOperationComponent } from './customer-restaurant-oper
 import { CustomerMenuOperationComponent } from './customer-menu-operation/customer-menu-operation.component';
 import { HomeComponent } from './home/home.component';
 import { MenudetailsComponent } from './menudetails/menudetails.component';
+import { CartComponent } from './cart/cart.component';
 const routes: Routes = [
   {path:"",component:HomeComponent},
   // redirectTo:"",pathMatch:"full",
@@ -18,11 +19,12 @@ const routes: Routes = [
     {path:"restaurant",component:AdminRestaurantOperationComponent},
     
   ]},
-  {path:"customer",component:CustomerdashboardComponent, redirectTo:"",pathMatch:"full"},
+  {path:"customer",component:HomeComponent, redirectTo:"",pathMatch:"full"},
   {path:"restaurant",component:CustomerRestaurantOperationComponent},
   {path:"menu",component:CustomerMenuOperationComponent},
-  {path:"search/:searchTerm",component:CustomerdashboardComponent},
-  {path:"menudetails/:id",component:MenudetailsComponent}
+  {path:"search/:searchTerm",component:HomeComponent},
+  {path:"menudetails/:id",component:MenudetailsComponent},
+  {path:"cart",component:CartComponent}
 ];
 
 @NgModule({

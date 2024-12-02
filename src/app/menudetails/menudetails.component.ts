@@ -3,6 +3,7 @@ import { Menu } from '../menu';
 import { MenuService } from '../menu.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-menudetails',
@@ -13,7 +14,7 @@ export class MenudetailsComponent implements OnInit{
 
   menu!:Menu;
   foodItemId!: number;
-  constructor(private menuService:MenuService, private router:Router,private activatedRoute:ActivatedRoute){}
+  constructor(private menuService:MenuService,private cartService: CartService, private router:Router,private activatedRoute:ActivatedRoute){}
   ngOnInit(): void {
    this.loadMenuDetails();
   }
@@ -37,6 +38,10 @@ export class MenudetailsComponent implements OnInit{
         console.log("Menu Details Loaded");
       },
     })
+  }
+  addToCart() {
+    this.cartService.addToCart(this.menu); 
+    this.router.navigateByUrl('/cart');   
   }
 
 }

@@ -1,8 +1,8 @@
 <app-search></app-search>
 
 <ul>
-    <li *ngFor="let m of menu" (click)="onFoodItemClick(m.menuId)">
-        <a routerLink>
+    <li *ngFor="let m of menu" >
+        <a routerLink="/menudetails/{{m.menuId}}">
         <img src={{m.image}} />
         <div class="content">
             <div class="name">
