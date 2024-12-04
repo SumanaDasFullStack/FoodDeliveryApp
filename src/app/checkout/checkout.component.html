@@ -4,21 +4,23 @@
         <app-title title="Order Form" fontSize="1.6rem"></app-title>
 
         <form [formGroup]="checkoutForm">
-            <text-input [control]="this.checkoutForm.controls.name" label="Name"></text-input>
-            <text-input [control]="this.checkoutForm.controls.address" label="Address"></text-input>
+            <app-text-input [control]="this.checkoutForm.controls['name']" label="Name"></app-text-input>
+            <app-text-input [control]="this.checkoutForm.controls['address']" label="Address"></app-text-input>
+
         </form>
 
-        <order-items-list [order]="order"></order-items-list>
+        
+        <app-order-item-list [order]="order"></app-order-item-list>
 
     </div>
 
-    <div class="map">
+    <!-- <div class="map">
 
         <app-title title="Choose Your Address On Map" fontSize="1.6rem"></app-title>
 
-        <map [order]="order"></map>
+        <app-map [order]="order"></app-map>
 
-    </div>
+    </div> -->
 
     <div class="buttons-container">
         <div class="buttons">

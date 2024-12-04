@@ -1,0 +1,115 @@
+.container {
+    margin-top: 1rem;
+    display: flex;
+    margin: 0 2rem 6rem 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.content {
+    width: 35rem;
+    margin-right: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.summary>div {
+    display: flex;
+    margin-top: 0.7rem;
+}
+
+.summary span {
+    font-size: 1.2rem;
+}
+
+.summary h3 {
+    margin: 0 1rem 0 0;
+    flex-basis: 5rem;
+}
+
+
+.buttons-container {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    margin: 2rem;
+    width: 35rem;
+}
+
+
+
+
+
+.payment-container {
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .payment-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .payment-summary {
+    margin-top: 20px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-summary h3 {
+    margin-top: 0;
+  }
+  
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  button.submit-btn {
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button.submit-btn:hover {
+    background-color: #218838;
+  }

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartService } from '../cart.service';
 import { LoginService } from '../login.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Order } from '../order';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -20,32 +22,41 @@ export class CheckoutComponent {
     this.order.items = cart.items;
     this.order.totalPrice = cart.totalPrice;
 
-    let { name, address } = userService.currentUser;
+    let { emailid, typeofuser } = userService.currentUser;
     this.checkoutForm = new FormGroup({
-      name: new FormControl(name, [Validators.required]),
-      address: new FormControl(address, [Validators.required])
+      name: new FormControl(emailid, [Validators.required]),
+      address: new FormControl("", [Validators.required])
     })
   }
 
   createOrder() {
+
+    this.order.name = this.checkoutForm.controls['name'].value;
+    this.order.address = this.checkoutForm.controls['address'].value;
+   
     if(this.checkoutForm.invalid) {
       this.toastrService.warning('Please fill the inputs', 'Invalid Inputs');
       return;
     }
 
-    if(!this.order.addressLatLng) {
+    if(!this.order.address) {
       this.toastrService.warning('Please select your address from the map', 'Invalid Address');
       return;
     }
 
-    this.order.name = this.checkoutForm.controls.name.value;
-    this.order.address = this.checkoutForm.controls.address.value;
+   
 
     this.orderService.create(this.order).subscribe({
-      next: () => {
-        this.router.navigateByUrl('/payment');
+      next: (orderResponse:any) => {
+        console.log(orderResponse);
+       // Get the order ID from the response
+       const orderId = orderResponse.id;
+
+       // Navigate to the PaymentComponent with the orderId
+       this.router.navigate(['/payment', orderId]);
+       // this.router.navigateByUrl('/payment');
       },
-      error: (errorResponse) => {
+      error: (errorResponse: { error: string | undefined; }) => {
         this.toastrService.error(errorResponse.error, 'Order Creation Failed');
       }
     })

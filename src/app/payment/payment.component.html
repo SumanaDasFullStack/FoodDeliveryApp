@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="content">
+
+        <app-title title="Order Summary" fontSize="1.6rem"></app-title>
+
+        <div class="summary">
+            <div>
+                <h3>OrderId</h3>
+                <span>{{order.id}}</span>
+            </div>
+            <div>
+                <h3>Address</h3>
+                <span>{{order.address}}</span>
+            </div>
+        </div>
+
+       <!--  <app-order-item-list [order]="order"></app-order-item-list> -->
+
+   
+
+    <!-- <div class="map">
+
+        <app-title title="Shipping Address" fontSize="1.6rem"></app-title>
+
+         <app-map [order]="order" [readonly]="true"></app-map> 
+
+    </div> -->
+  </div>
+
+    <div class="payment-container">
+        <h2>Enter Your Payment Information</h2>
+      
+        <form (submit)="onSubmit()" class="payment-form">
+      
+          <!-- Card Number -->
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" [(ngModel)]="cardNumber" name="cardNumber" placeholder="Enter your card number" required />
+          </div>
+      
+          <!-- Expiration Date -->
+          <div class="form-group">
+            <label for="expirationDate">Expiration Date (MM/YY)</label>
+            <input type="text" id="expirationDate" [(ngModel)]="expirationDate" name="expirationDate" placeholder="MM/YY" required />
+          </div>
+      
+          <!-- CVV -->
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" [(ngModel)]="cvv" name="cvv" placeholder="CVV" required />
+          </div>
+      
+          <!-- Payment Summary -->
+          <div class="payment-summary">
+            <h3>Payment Summary</h3>
+            <!-- <div class="summary-item">
+              <span>Item:</span>
+              <span>{{ order.name }}</span>
+            </div>
+            <div class="summary-item">
+              <span>Amount:</span>
+              <span>{{ order.totalPrice }}</span>
+            </div> -->
+            <div class="summary-item">
+              <span>Total Amount:</span>
+              <span>{{ order.totalPrice }}</span>
+            </div>
+          </div>
+      
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">Submit Payment</button>
+        </form>
+      </div>

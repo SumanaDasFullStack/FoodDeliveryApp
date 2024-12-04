@@ -22,6 +22,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './cart/cart.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { TextInputComponent } from './partials/text-input/text-input.component';
+import { OrderItemListComponent } from './partials/order-item-list/order-item-list.component';
+import { InputValidationComponent } from './partials/input-validation/input-validation.component';
+import { InputContainerComponent } from './partials/input-container/input-container.component';
+import { TitleComponent } from './partials/title/title.component';
+import { PaymentComponent } from './payment/payment.component';
+import { MapComponent } from './partials/map/map.component';
+import { PaypalButtonComponent } from './partials/paypal-button/paypal-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,14 +46,26 @@ import { CheckoutComponent } from './checkout/checkout.component';
     HomeComponent,
     MenudetailsComponent,
     CartComponent,
-    NotFoundComponent,
-    CheckoutComponent
+    NotFoundComponent,      
+    InputValidationComponent,
+    InputContainerComponent,
+    TextInputComponent, 
+    CheckoutComponent,
+    OrderItemListComponent,
+    TitleComponent,
+    PaymentComponent,
+    MapComponent,
+    PaypalButtonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule,
     BrowserAnimationsModule,  // Add this module to enable animations
-    ToastrModule.forRoot()     // Add ToastrModule to imports
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      newestOnTop: false
+    })     // Add ToastrModule to imports
   ],
   providers: [],
   bootstrap: [AppComponent]

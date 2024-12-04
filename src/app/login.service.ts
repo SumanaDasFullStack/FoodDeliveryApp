@@ -30,7 +30,7 @@ export class LoginService {
           this.setUserToLocalStorage(user);
           this.loggedIn.next(user);
           this.toastrService.success(
-            `Welcome to  ${user.emailid}!`,
+            `Welcome to FoodDeliveryApp ${user.emailid}!`,
             'Login Successful'
           )
           },

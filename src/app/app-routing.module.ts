@@ -10,6 +10,9 @@ import { CustomerMenuOperationComponent } from './customer-menu-operation/custom
 import { HomeComponent } from './home/home.component';
 import { MenudetailsComponent } from './menudetails/menudetails.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { authGuard } from './auth.guard';
+import { PaymentComponent } from './payment/payment.component';
 const routes: Routes = [
   {path:"",component:HomeComponent},
   // redirectTo:"",pathMatch:"full",
@@ -24,7 +27,9 @@ const routes: Routes = [
   {path:"menu",component:CustomerMenuOperationComponent},
   {path:"search/:searchTerm",component:HomeComponent},
   {path:"menudetails/:id",component:MenudetailsComponent},
-  {path:"cart",component:CartComponent}
+  {path:"cart",component:CartComponent},
+  {path:"checkout",component:CheckoutComponent, canActivate: [authGuard]},
+  {path:"payment/:orderId",component:PaymentComponent,canActivate: [authGuard]}
 ];
 
 @NgModule({
