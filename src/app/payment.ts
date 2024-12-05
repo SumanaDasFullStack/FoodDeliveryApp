@@ -1,6 +1,6 @@
 export class Payment {
     id!: number;   
     amount!: number;
-    method!: string;
+    paymentMethod!: string;
     status!: string;
 }

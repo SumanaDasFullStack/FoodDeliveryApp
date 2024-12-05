@@ -30,6 +30,7 @@ import { TitleComponent } from './partials/title/title.component';
 import { PaymentComponent } from './payment/payment.component';
 import { MapComponent } from './partials/map/map.component';
 import { PaypalButtonComponent } from './partials/paypal-button/paypal-button.component';
+import { OrderTrackComponent } from './order-track/order-track.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,8 @@ import { PaypalButtonComponent } from './partials/paypal-button/paypal-button.co
     TitleComponent,
     PaymentComponent,
     MapComponent,
-    PaypalButtonComponent
+    PaypalButtonComponent,
+    OrderTrackComponent
   ],
   imports: [
     BrowserModule,

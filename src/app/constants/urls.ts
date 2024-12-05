@@ -12,4 +12,6 @@ export const MENU_BY_RESTAURANTID = BASE_URL + '/menu/menus/';
 export const MENU_DETAILS_URL = BASE_URL + '/menu/menuDetails/';
 export const ORDER_CREATE_URL = BASE_URL + '/orders/createOrder';
 export const ORDER_NEW_FOR_CURRENT_USER_URL = BASE_URL + '/orders/getOrder/';
-export const ORDER_PAY_URL = BASE_URL + '';
+export const ORDER_PAY_URL = BASE_URL + '/payments/';
+export const ORDER_TRACK_URL = BASE_URL + '/orders/track/';
+export const ORDER_STATUSES_URL = BASE_URL + '/orders/allstatus';

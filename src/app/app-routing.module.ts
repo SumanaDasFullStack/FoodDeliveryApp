@@ -13,6 +13,7 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { authGuard } from './auth.guard';
 import { PaymentComponent } from './payment/payment.component';
+import { OrderTrackComponent } from './order-track/order-track.component';
 const routes: Routes = [
   {path:"",component:HomeComponent},
   // redirectTo:"",pathMatch:"full",
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path:"menudetails/:id",component:MenudetailsComponent},
   {path:"cart",component:CartComponent},
   {path:"checkout",component:CheckoutComponent, canActivate: [authGuard]},
-  {path:"payment/:orderId",component:PaymentComponent,canActivate: [authGuard]}
+  {path:"payment/:orderId",component:PaymentComponent,canActivate: [authGuard]},
+  {path:"track/:orderId",component:OrderTrackComponent,canActivate: [authGuard]}
 ];
 
 @NgModule({
