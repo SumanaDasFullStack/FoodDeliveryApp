@@ -20,7 +20,7 @@ import { MenudetailsComponent } from './menudetails/menudetails.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './cart/cart.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './partials/not-found/not-found.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { TextInputComponent } from './partials/text-input/text-input.component';
 import { OrderItemListComponent } from './partials/order-item-list/order-item-list.component';
@@ -31,6 +31,14 @@ import { PaymentComponent } from './payment/payment.component';
 import { MapComponent } from './partials/map/map.component';
 import { PaypalButtonComponent } from './partials/paypal-button/paypal-button.component';
 import { OrderTrackComponent } from './order-track/order-track.component';
+import { ProfileComponent } from './profile/profile.component';
+import { OrdersComponent } from './orders/orders.component';
+import { CreatenewPasswordComponent } from './createnew-password/createnew-password.component';
+import { DefaultButtonComponent } from './partials/default-button/default-button.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MenuEditPageComponent } from './menu-edit-page/menu-edit-page.component';
+import { AdminUsersPageComponent } from './admin-users-page/admin-users-page.component';
+import { AdminUsersEditPageComponent } from './admin-users-edit-page/admin-users-edit-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +65,15 @@ import { OrderTrackComponent } from './order-track/order-track.component';
     PaymentComponent,
     MapComponent,
     PaypalButtonComponent,
-    OrderTrackComponent
+    OrderTrackComponent,
+    ProfileComponent,
+    OrdersComponent,
+    CreatenewPasswordComponent,
+    DefaultButtonComponent,
+    DashboardComponent,
+    MenuEditPageComponent,
+    AdminUsersPageComponent,
+    AdminUsersEditPageComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +85,9 @@ import { OrderTrackComponent } from './order-track/order-track.component';
       newestOnTop: false
     })     // Add ToastrModule to imports
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

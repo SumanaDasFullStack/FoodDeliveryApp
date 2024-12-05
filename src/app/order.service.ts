@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Order } from './order';
-import { ORDER_CREATE_URL, ORDER_NEW_FOR_CURRENT_USER_URL, ORDER_PAY_URL, ORDER_STATUSES_URL, ORDER_TRACK_URL } from './constants/urls';
+import { ORDER_CREATE_URL, ORDER_NEW_FOR_CURRENT_USER_URL, ORDER_PAY_URL, ORDER_STATUSES_URL, ORDER_TRACK_URL, ORDERS_URL } from './constants/urls';
 import { Payment } from './payment';
 
 @Injectable({
@@ -28,12 +28,12 @@ export class OrderService {
     return this.httpClient.get<Order>(ORDER_TRACK_URL + id);
   }
 
- /*  getAll(status?: string): Observable<Order[]> {
+  getAll(status?: string): Observable<Order[]> {
     return this.httpClient.get<Order[]>(ORDERS_URL + '/' + status);
-  } */
+  }
 
-  getAllStatus(): Observable<string[]> {
-    return this.httpClient.get<string[]>(ORDER_STATUSES_URL);
+  getAllStatus(): Observable<Order[]> {
+    return this.httpClient.get<Order[]>(ORDER_STATUSES_URL);
   }
 
 

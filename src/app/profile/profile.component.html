@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="details">
+
+        <app-title title="Update Form" fontSize="1.6rem"></app-title>
+
+        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+
+            <app-text-input [control]="this.profileForm.controls['emailid']" label="Name"
+                [showErrorsWhen]="isSubmitted"></app-text-input>
+            <app-text-input [control]="this.profileForm.controls['address']" label="Address"
+                [showErrorsWhen]="isSubmitted"></app-text-input>
+
+            <app-default-button text="Update" bgColor="#009e84"></app-default-button>
+            
+        </form>
+
+        <app-createnew-password></app-createnew-password>
+
+    </div>
+</div>

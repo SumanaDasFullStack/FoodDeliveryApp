@@ -3,6 +3,13 @@ const BASE_URL = environment.production? '' : 'http://localhost:9090';
 
 export const USER_LOGIN_URL = BASE_URL + '/login/signin';
 export const USER_REGISTER_URL = BASE_URL + '/login/signup';
+export const USER_CHANGE_PASSWORD_URL=BASE_URL+'';
+export const GET_ALL_USERS = BASE_URL + '/login/users/allUser';
+export const GET_ALL_USERS_SEARCH = BASE_URL + '/login/users/allUser?searchText=';
+export const USER_BLOCK_URL = BASE_URL + '/api/users/toggleBlock/';
+export const USER_BY_ID_URL = BASE_URL + '/api/users/getById/';
+export const UPDATE_USER_URL = BASE_URL + '/login/users/update?emailid=';
+export const USER_UPDATE_PROFILE_URL = BASE_URL+'/login/users/update?emailid=';
 
 
 export const ADD_MENU = BASE_URL + '/addMenu';
@@ -15,3 +22,11 @@ export const ORDER_NEW_FOR_CURRENT_USER_URL = BASE_URL + '/orders/getOrder/';
 export const ORDER_PAY_URL = BASE_URL + '/payments/';
 export const ORDER_TRACK_URL = BASE_URL + '/orders/track/';
 export const ORDER_STATUSES_URL = BASE_URL + '/orders/allstatus';
+export const ORDERS_URL = BASE_URL + '/orders/active';
+
+export const FOODS_URL = BASE_URL + '/api/foods';
+export const FOODS_TAGS_URL = FOODS_URL + '/tags';
+export const FOODS_BY_SEARCH_URL = FOODS_URL + '/search/';
+export const FOODS_BY_TAG_URL = FOODS_URL + '/tag/';
+export const FOODS_BY_ID_URL = FOODS_URL + '/';
+export const UPLOAD_URL = BASE_URL + '/api/upload';

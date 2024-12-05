@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Menu } from './menu';
 import { Observable } from 'rxjs';
-import { ADD_MENU, MENU_BY_SEARCH_URL, MENU_DETAILS_URL, MENU_URL_ALL } from './constants/urls';
+import { ADD_MENU, FOODS_BY_ID_URL, FOODS_BY_SEARCH_URL, FOODS_URL, MENU_BY_SEARCH_URL, MENU_DETAILS_URL, MENU_URL_ALL } from './constants/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +36,26 @@ export class MenuService {
         'Content-Type': 'application/json'
       })
     })
+  }
+
+  //for admin purpose
+  getAllFoodsBySearchTerm(searchTerm: string): Observable<Menu[]> {
+    return this.http.get<Menu[]>(FOODS_BY_SEARCH_URL + searchTerm);
+  }
+
+  getAll(): Observable<Menu[]> {
+    return this.http.get<Menu[]>(FOODS_URL);
+  }
+  deleteById(foodId: number) {
+    return this.http.delete(FOODS_BY_ID_URL + foodId);
+  }
+
+  update(food: Menu) {
+    return this.http.put(FOODS_URL , food);
+  }
+
+  add(food: Menu): Observable<Menu> {
+    return this.http.post<Menu>(FOODS_URL, food);
   }
 
 }

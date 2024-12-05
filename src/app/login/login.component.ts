@@ -24,8 +24,11 @@ returnUrl='';
   }
   signIn(): void {
     let login = this.loginRef.value;
-    //console.log(login);
+   // console.log(login);
 this.ls.signIn(login).subscribe(() => {
+  if(login.typeofuser==="admin")
+    this.router.navigateByUrl("/dashboard");
+  else
   this.router.navigateByUrl(this.returnUrl); // After successful login, navigate to the stored return URL
 });
 

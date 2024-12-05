@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../login.service';
 import { Login } from '../login';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,11 @@ import { Login } from '../login';
 export class HeaderComponent {
   cartQuantity = 0;
   user!: Login;
-constructor(private loginService: LoginService){
+constructor(cartService: CartService,private loginService: LoginService){
+  
+  cartService.getCartObservable().subscribe((newCart) => {
+    this.cartQuantity = newCart.totalCount;
+  })
   loginService.loginObservable.subscribe((newUser)=>{
 this.user=newUser;
   })

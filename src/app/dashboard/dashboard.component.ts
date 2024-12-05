@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { LoginService } from '../login.service';
 
 @Component({
-  selector: 'app-admindashboard',
-  templateUrl: './admindashboard.component.html',
-  styleUrls: ['./admindashboard.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class AdmindashboardComponent {
+export class DashboardComponent {
+
   allItems = [
     {
       title: 'Orders',
@@ -47,4 +48,6 @@ export class AdmindashboardComponent {
     this.isAdmin = userService.currentUser.isAdmin
 
   }
+
 }
+
