@@ -1,116 +1,98 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuService } from '../menu.service';
 import { ToastrService } from 'ngx-toastr';
 import { UploadService } from '../upload.service';
+import { IMenuUpdate } from '../partials/IMenuUpdate';
 
 @Component({
   selector: 'app-menu-edit-page',
   templateUrl: './menu-edit-page.component.html',
   styleUrls: ['./menu-edit-page.component.css']
 })
-export class MenuEditPageComponent {
+export class MenuEditPageComponent implements OnInit {
 
-  isEditMode: boolean = true; // Whether the page is in edit mode or not
-  imageUrl!: string | null; // Url of the image of the food item
-  foodId!: string; // Unique id of the food item
-
-  // Reactive form for handling the input fields of the food item
-  foodForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    price: new FormControl('', [Validators.required]),
-    tags: new FormControl(''),
-    origins: new FormControl('', [Validators.required]),
-    cookTime: new FormControl('', [Validators.required])
-  });
-
-  // Indicates whether the form has been submitted or not
+  // Form group definition
+  foodForm: FormGroup;
+  isEditMode: boolean = false; // Set to true if in edit mode
   isSubmitted: boolean = false;
+  menuid!:string;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
     private foodService: MenuService,
-    private uploadService: UploadService,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
-    // Subscribe to route parameters to determine if the component is in edit mode
+    // Form initialization with validation
+    this.foodForm = this.fb.group({
+      name: ['', Validators.required],
+      category: ['', Validators.required],
+      description: ['', Validators.required],
+      price: ['', [Validators.required, Validators.min(0)]],
+      image: ['', Validators.required],
+      isAvailable: [true], // Default to true
+      restaurantId: ['', [Validators.required, Validators.min(1)]]
+    });
+  }
+
+  ngOnInit(): void {
+    // Check if in edit mode and retrieve data if needed
     this.activatedRoute.params.subscribe(params => {
+      this.menuid=params['id'];
+      console.log("menu id from previous "+this.menuid);
       if (params['id']) {
-
-        this.foodId = params['id'];
         this.isEditMode = true;
-
         this.foodService.findMenuDetails(params['id']).subscribe(food => {
-          if (!food) return;
-          this.imageUrl = food.image;
-
-          // Convert the array to a comma-separated string
-          /* const tagsString = food.tags ? food.tags.join(',') : '';
-          const originsString = food.origins ? food.origins.join(',') : ''; */
-
-          const foodData = {
-            name: food.name,
-            price: food.price.toString(), // Convert number to string
-            tags: "",
-            origins: "",
-           
-          };
-
-          // Populate the form with fetched food data
-          this.foodForm.patchValue(foodData);
-        })
-
+          if (food) {
+            // Populate form with the food data
+            this.foodForm.patchValue({
+              name: food.name,
+              category: food.category,
+              description: food.description,
+              price: food.price,
+              image: food.image,
+              isAvailable: food.isAvailable,
+              restaurantId: food.restaurant.restaurantId
+            });
+          }
+        });
       }
-      else {
-        // If no ID is present, set the component to add mode
-        this.isEditMode = false;
-      }
-    })
+    });
   }
 
-  upload(event: any) {
-    this.uploadService.uploadImage(event).subscribe((data: any) => {
-      this.imageUrl = data.imageUrl;
-    })
-  }
-
-  // Method to handle form submission
+  // Submit the form data
   submit(foodData: any) {
     this.isSubmitted = true;
 
-    // Check if the form is invalid
+    // Validate the form
     if (this.foodForm.invalid) {
       this.toastrService.error('Please fill in all required fields!');
       return;
     }
 
-    // Check if the image url is present
-    if (!this.imageUrl) {
-      this.toastrService.error('Please select an image!');
-      return;
-    }
+    // Construct the food object
+    const food = {
+      ...foodData,
+      createdAt: new Date().toISOString(),
+      restaurant: {
+        restaurantId: foodData.restaurantId
+      }
+    };
 
-    // Prepare the food object with image URL and ID
-    const food = { ...foodData, imageUrl: this.imageUrl, id: this.foodId }
-
+    // Send the data to the service (microservice)
     if (this.isEditMode) {
-      this.foodService.update(food).subscribe(() => {
+      this.foodService.update(this.menuid,food).subscribe(response => {
         this.toastrService.success(`Food "${food.name}" updated successfully!`);
-      })
-    }
-    else {
-      this.foodService.add(food).subscribe((food) => {
+        this.router.navigate(['/admin/foods']);
+      });
+    } else {
+      this.foodService.add(food).subscribe(response => {
         this.toastrService.success(`Food "${food.name}" added successfully!`);
-        this.router.navigateByUrl('/admin/editFood/' + food.menuId, { replaceUrl: true })
-        /*{ replaceUrl: true } is an option in Angular's router navigation that, 
-          when set to true, replaces the current URL in the browser's history with the new URL. 
-          This can be useful when you want to navigate to a new page without leaving a history entry 
-          for the previous page, making the browser's "back" button skip the intermediate state.
-        */
-      })
+        this.router.navigate(['/admin/foods']);
+      });
     }
   }
-
 }

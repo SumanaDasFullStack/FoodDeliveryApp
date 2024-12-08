@@ -12,7 +12,7 @@ export class ProfileComponent implements OnInit {
 
   profileForm: FormGroup;
   isSubmitted: boolean = false;
-  // returnUrl = ''; // I think its not needed here
+   returnUrl = ''; // I think its not needed here
 
   constructor(private userService: LoginService, private activatedRoute: ActivatedRoute, private router: Router) {
     let { emailid, typeofuser } = userService.currentUser;
@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;  //why
+     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];  //why
   }
 
   updateProfile() {

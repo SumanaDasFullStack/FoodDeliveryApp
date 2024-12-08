@@ -24,13 +24,14 @@ export class AdminUsersEditPageComponent {
   isSubmitted: boolean = false;
 
   constructor(
-    activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private userService: LoginService,
     private toastrService: ToastrService,
     private router: Router
   ) {
     activatedRoute.params.subscribe((params) => {
-      this.userId = params['emailid'];
+      this.userId =params['emailid'];
+      console.log("value of userid "+this.userId);
       this.isEditMode = !!this.userId;
       if (this.isEditMode) {
         this.userService.getById(this.userId).subscribe((user) => {
@@ -53,7 +54,7 @@ export class AdminUsersEditPageComponent {
       })
     }
     else {
-      //
+      console.log("button not in edit mode");
     }
 
   }

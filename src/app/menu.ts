@@ -1,3 +1,5 @@
+import { IRestaurant } from "./partials/IRestaurant";
+
 export class Menu {
     constructor(
         public menuId:number,
@@ -7,7 +9,10 @@ export class Menu {
         public image:string,
         public isAvailable:boolean,
         public price:number,
-        public restaurantId:number,
+     //   public restaurantId:number,
+        public restaurant: {
+            restaurantId: number;
+          },
         public createdAt:string
     ){}
 }

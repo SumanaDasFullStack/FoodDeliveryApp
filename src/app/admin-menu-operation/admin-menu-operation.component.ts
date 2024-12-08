@@ -20,10 +20,16 @@ export class AdminMenuOperationComponent {
         this.searchTerm = params['searchTerm'];
         this.foodService.findMenuSearch(params['searchTerm']).subscribe((serverFoods) => {
           this.foods = serverFoods;
+          // this.foods.forEach(food => {
+          //   console.log("FOOD DETAILS ", JSON.stringify(food));
+          // });
         })
       } else {
         this.foodService.findAllMenu().subscribe((serverFoods) => {
           this.foods = serverFoods;
+          // this.foods.forEach(food => {
+          //   console.log("FOOD DETAILS ", JSON.stringify(food));
+          // });
         })
       }
     })

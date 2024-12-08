@@ -1,5 +1,5 @@
 <header><div class="container">
-  <a routerLink="/" class="logo">
+  <a  class="logo">
     <img src="assets/logo.png" alt="Angular Logo" class="angular-logo"></a>
     <nav>
         <ul>
@@ -7,20 +7,27 @@
             <a routerLink="/login">Login</a>
           </li>
 
-          <li *ngIf="user.emailid" class="menu-container">
-            <a routerLink="/dashboard">{{user.emailid}}</a>
-            <div class="menu">
-              <a routerLink="/profile">Profile</a>
-              <a routerLink="/orders">Orders</a>
-              <a (click)="logout()">Logout</a>
-            </div>
-          </li>
-          
-          <li>
-            <a routerLink="/cart">
-              Cart 
-            </a>
-          </li>
+              <!-- For non-admin users (i.e., customers) -->
+        <li *ngIf="user.emailid && !user.isAdmin" class="menu-container">
+          <a routerLink="/customer">{{ user.emailid }}</a>
+          <div class="menu">
+            <a routerLink="/profile">Profile</a>
+            <a routerLink="/orders">Orders</a>
+            
+          </div>
+        </li>
+
+        <!-- For admin users, show only the logout button -->
+        <li *ngIf="user.emailid && user.isAdmin">
+          <a routerLink="/dashboard">{{ user.emailid }}</a>
+          <a (click)="logout()">Logout</a>
+        </li>
+
+        <!-- Show logout button if user is logged in, and not an admin -->
+        <li *ngIf="user.emailid && !user.isAdmin">
+                   <a (click)="logout()">Logout</a>
+        </li>
+        <li *ngIf="!user.isAdmin"><a routerLink="/cart">Cart</a></li>
         </ul>
       </nav>
 </div>

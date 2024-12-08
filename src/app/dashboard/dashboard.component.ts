@@ -16,13 +16,13 @@ export class DashboardComponent {
       bgColor: '#ec407a',
       color: 'white',
     },
-    {
-      title: 'Profile',
-      imageUrl: 'assets/icons/profile.svg',
-      url: '/profile',
-      bgColor: '#1565c0',
-      color: 'white',
-    },
+    // {
+    //   title: 'Profile',
+    //   imageUrl: 'assets/icons/profile.svg',
+    //   url: '/profile',
+    //   bgColor: '#1565c0',
+    //   color: 'white',
+    // },
     {
       title: 'Users',
       imageUrl: 'assets/icons/users.svg',

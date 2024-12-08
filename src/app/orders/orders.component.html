@@ -15,17 +15,19 @@
 
     <div *ngFor="let order of orders" id="{{order.id}}" class="order_summary">
         <div class="header">
-            <span>{{order.id}}</span>
-            <span>{{order.createdAt | date }}</span>
+            <span>OrderId: {{order.id}}</span>
+            <span>Created At: {{order.createdAt | date }}</span>
             <span>{{order.status}}</span>
         </div>
 
         <div class="items">
-            <div *ngFor="let item of order.items">
+            <!-- <div *ngFor="let item of order.items">
                 <a routerLink="/food/{{item.food.menuId}}">
                     <img src="{{item.food.image}}" alt="{{item.food.name}}" />
                 </a>
-            </div>
+            </div> -->
+            
+
         </div>
 
         <div class="footer">
@@ -33,7 +35,7 @@
                 <a routerLink="/track/{{order.id}}">Show Order</a>
             </div>
             <div>
-                <span class="price">{{order.totalPrice| currency:'INR'}}</span>
+                <span class="price">Total Price: {{order.totalPrice| currency:'INR'}}</span>
             </div>
         </div>
 

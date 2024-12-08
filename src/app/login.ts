@@ -4,5 +4,8 @@ export class Login {
 emailid!: string;
 password!: string;
 typeofuser!: string;
-isAdmin!:boolean;
+isAdmin!: boolean;
+name!: string;
+address!:string;
+isBlocked!: boolean;
 }

@@ -18,7 +18,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
 
   // If not admin, show an error message and navigate to the dashboard
   toastrService.error('Access Denied');
-  router.navigate(['/dashboard']);
+  router.navigate(['/login']);
 
   // Return false to deny access to the route
   return false;

@@ -42,7 +42,7 @@ export class AdminUsersPageComponent {
         // Find the user in the list of users and update the block status locally in the component
         const user = this.users.find((u) => u.emailid === userId)!;
         if (user) {
-         // user.isBlocked = isBlocked;
+          user.isBlocked = isBlocked;
         }
       },
       error: (err: { error: string | undefined; }) => {

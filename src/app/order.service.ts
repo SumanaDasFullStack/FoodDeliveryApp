@@ -11,9 +11,9 @@ import { Payment } from './payment';
 export class OrderService {
 
   constructor(private httpClient:HttpClient) { }
-  create(order: Order) {
+  create(order: Order, emailid: string) {
     console.log(order);
-    return this.httpClient.post<Order>(ORDER_CREATE_URL, order);
+    return this.httpClient.post<Order>(ORDER_CREATE_URL+emailid, order);
   }
 
   getNewOrderForCurrentUser(orderid:number): Observable<Order> {
@@ -32,8 +32,8 @@ export class OrderService {
     return this.httpClient.get<Order[]>(ORDERS_URL + '/' + status);
   }
 
-  getAllStatus(): Observable<Order[]> {
-    return this.httpClient.get<Order[]>(ORDER_STATUSES_URL);
+  getAllStatus(userid: string, isAdmin: boolean): Observable<Order[]> {
+    return this.httpClient.get<Order[]>(ORDER_STATUSES_URL+userid+"/"+isAdmin);
   }
 
 

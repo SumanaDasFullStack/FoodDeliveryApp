@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:"signup",component:SignupComponent},
   {path:"login",component:LoginComponent},
  // {path:"admin",component:AdmindashboardComponent,canActivate:[authGuard]},
- // {path:"customer",component:HomeComponent, redirectTo:"",pathMatch:"full"},
+  {path:"customer",component:HomeComponent, redirectTo:"",pathMatch:"full"},
   {path:"restaurant",component:CustomerRestaurantOperationComponent},
   {path:"menu",component:CustomerMenuOperationComponent},
   {path:"search/:searchTerm",component:HomeComponent},
@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: 'admin/editFood/:id', component: MenuEditPageComponent, canActivate: [authGuard, adminGuard] },
   { path: 'admin/users', component: AdminUsersPageComponent, canActivate: [authGuard, adminGuard] },
   { path: 'admin/users/:searchTerm', component: AdminUsersPageComponent, canActivate: [authGuard, adminGuard] },
-  { path: 'admin/editUser/:userId', component: AdminUsersEditPageComponent, canActivate: [authGuard, adminGuard] }
+  { path: 'admin/editUser/:emailid', component: AdminUsersEditPageComponent, canActivate: [authGuard, adminGuard] }
 ];
 
 @NgModule({

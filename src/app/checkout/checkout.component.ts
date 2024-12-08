@@ -17,9 +17,11 @@ export class CheckoutComponent {
 
   checkoutForm: FormGroup;
   
-  constructor(cartService: CartService, userService: LoginService, private toastrService: ToastrService, private orderService: OrderService, private router: Router) { 
+  constructor(cartService: CartService, private userService: LoginService, private toastrService: ToastrService, private orderService: OrderService, private router: Router) { 
     const cart = cartService.getCart();
+   // console.log("cartitems "+JSON.stringify(cart));
     this.order.items = cart.items;
+   // console.log("orderitems "+JSON.stringify(this.order));
     this.order.totalPrice = cart.totalPrice;
 
     let { emailid, typeofuser } = userService.currentUser;
@@ -44,11 +46,11 @@ export class CheckoutComponent {
       return;
     }
 
-   
+   console.log("within checkout order details before sent:"+this.order);
 
-    this.orderService.create(this.order).subscribe({
+    this.orderService.create(this.order, this.userService.currentUser.emailid).subscribe({
       next: (orderResponse:any) => {
-        console.log(orderResponse);
+      //  console.log("response after create order"+JSON.stringify(orderResponse));
        // Get the order ID from the response
        const orderId = orderResponse.id;
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from '../login.service';
 import { Login } from '../login';
 import { CartService } from '../cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ import { CartService } from '../cart.service';
 export class HeaderComponent {
   cartQuantity = 0;
   user!: Login;
-constructor(cartService: CartService,private loginService: LoginService){
+constructor(cartService: CartService,private loginService: LoginService,private router: Router){
   
   cartService.getCartObservable().subscribe((newCart) => {
     this.cartQuantity = newCart.totalCount;
@@ -24,5 +25,6 @@ this.user=newUser;
 
   logout() {
     this.loginService.logout();
+   // this.router.navigate(['/login']);  // Redirect to login page
   }
 }

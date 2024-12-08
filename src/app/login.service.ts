@@ -5,6 +5,7 @@ import { GET_ALL_USERS, GET_ALL_USERS_SEARCH, UPDATE_USER_URL, USER_BLOCK_URL, U
 import { Login } from './login';
 import { ToastrService } from 'ngx-toastr';
 import { IUserUpdateProfile } from './partials/IUserUpdateProfile';
+import { Router } from '@angular/router';
 
 const USER_KEY = 'User'; //for local storage
 
@@ -14,7 +15,7 @@ const USER_KEY = 'User'; //for local storage
 export class LoginService {
   private loggedIn = new BehaviorSubject<Login>(this.getUserFromLocalStorage());
   public  loginObservable: Observable<Login>;
-  constructor(public httpClient:HttpClient,private toastrService: ToastrService) { 
+  constructor(public httpClient:HttpClient,private toastrService: ToastrService, private router:Router) { 
     this.loginObservable =this.loggedIn.asObservable();
   }  //DI for Client
 
@@ -31,7 +32,7 @@ export class LoginService {
           this.setUserToLocalStorage(user);
           this.loggedIn.next(user);
           this.toastrService.success(
-            `Welcome to FoodDeliveryApp ${user.isAdmin}!`,
+            `Welcome to FoodDeliveryApp ${user.name}!`,
             'Login Successful  '
           )
           },
@@ -79,7 +80,9 @@ export class LoginService {
   logout() {
      this.loggedIn.next(new Login());
      localStorage.removeItem(USER_KEY);
-    window.location.reload();
+      //window.location.reload();
+      // Navigate to the login page (instead of refreshing the page)
+    this.router.navigate(['/login']);
   }
 
 
@@ -152,11 +155,19 @@ getAll(): Observable<Login[]> {
 
 // Method to toggle user block status
 toggleBlock(userId: string): Observable<boolean> {
-  return this.httpClient.put<boolean>(USER_BLOCK_URL + userId, {});
+  return this.httpClient.put<boolean>(USER_BLOCK_URL + userId, {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  });
 }
 
 getById(userId: string): Observable<Login> {
-  return this.httpClient.get<Login>(USER_BY_ID_URL + userId);
+  return this.httpClient.get<Login>(USER_BY_ID_URL + userId,{
+    headers:new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  });
 }
 
 updateUser(userid: string, userData: any) {

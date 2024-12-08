@@ -19,13 +19,13 @@
 
             <div *ngFor="let user of users" class="list_item">
 
-                <span> {{user.emailid}} </span>
+                <span> {{user.name}} </span>
                 <span> {{user.emailid}} </span>
                 <span> {{user.typeofuser}} </span>
                 <span> {{user.isAdmin ? '✅' : '❌' }} </span>
                 <span class="actions">
                     <a routerLink="/admin/editUser/{{user.emailid}}">Edit</a>
-                   <!--  <a (click)="handleToggleBlock(user.emailid)"> {{user.isBlocked ? 'Unblock' : 'Block'}} </a> -->
+                    <a (click)="handleToggleBlock(user.emailid)"> {{user.isBlocked ? 'Unblock' : 'Block'}} </a>
                 </span>
 
             </div>
