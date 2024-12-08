@@ -24,10 +24,10 @@ export class CheckoutComponent {
    // console.log("orderitems "+JSON.stringify(this.order));
     this.order.totalPrice = cart.totalPrice;
 
-    let { emailid, typeofuser } = userService.currentUser;
+    let { emailid, name, address, typeofuser } = userService.currentUser;
     this.checkoutForm = new FormGroup({
-      name: new FormControl(emailid, [Validators.required]),
-      address: new FormControl("", [Validators.required])
+      name: new FormControl(name, [Validators.required]),
+      address: new FormControl(address, [Validators.required])
     })
   }
 

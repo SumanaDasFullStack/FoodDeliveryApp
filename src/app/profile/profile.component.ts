@@ -15,10 +15,10 @@ export class ProfileComponent implements OnInit {
    returnUrl = ''; // I think its not needed here
 
   constructor(private userService: LoginService, private activatedRoute: ActivatedRoute, private router: Router) {
-    let { emailid, typeofuser } = userService.currentUser;
+    let { emailid, name, address } = userService.currentUser;
     this.profileForm = new FormGroup({
-      name: new FormControl(emailid, [Validators.required]),
-      address: new FormControl(typeofuser, [Validators.required])
+      name: new FormControl(name, [Validators.required]),
+      address: new FormControl(address, [Validators.required])
     })
   }
 
@@ -35,10 +35,12 @@ export class ProfileComponent implements OnInit {
 
     const name = this.profileForm.value.name as string;
     const address = this.profileForm.value.address as string;
+    const isAdmin =false;
 
     this.userService.updateProfile(this.userService.currentUser.emailid,{
       name,
-      address
+      address,
+      isAdmin
     }).subscribe((newUser) => {
       // console.log(newUser);
       // this.router.navigateByUrl(this.returnUrl);

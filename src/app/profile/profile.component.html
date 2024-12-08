@@ -5,7 +5,7 @@
 
         <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
 
-            <app-text-input [control]="this.profileForm.controls['emailid']" label="Name"
+            <app-text-input [control]="this.profileForm.controls['name']" label="Name"
                 [showErrorsWhen]="isSubmitted"></app-text-input>
             <app-text-input [control]="this.profileForm.controls['address']" label="Address"
                 [showErrorsWhen]="isSubmitted"></app-text-input>
@@ -14,7 +14,7 @@
             
         </form>
 
-        <app-createnew-password></app-createnew-password>
+        <!-- <app-createnew-password></app-createnew-password> -->
 
     </div>
 </div>

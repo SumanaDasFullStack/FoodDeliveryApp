@@ -12,6 +12,8 @@ export class SignupComponent implements OnInit{
   loginRef = new FormGroup({
     emailid:new FormControl(),
     password:new FormControl(),
+    name:new FormControl(),
+    address:new FormControl(),
     typeofuser:new FormControl()
   });
   msg:string ="";

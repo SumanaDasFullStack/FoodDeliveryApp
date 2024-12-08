@@ -1,38 +1,71 @@
-container{
+/* Ensure that the body takes up the full height of the viewport */
+body, html {
+    height: 100%;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    margin-top: 3rem;
-    background-color: aqua;
 }
-details{
-    width: fit-content;
+
+/* Container to center the form */
+.container {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    
+    height: 100%; /* Fill the full viewport height */
 }
-h3{
+
+/* Center the details block and apply some padding and border */
+.details {
+    width: 100%;
+    max-width: 600px; /* Maximum width for the form */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    margin-top: 20px;
+}
+
+/* Style for form inputs */
+input[type="email"],
+input[type="password"],
+input[type="name"],
+input[type="address"],
+input[type="submit"],
+input[type="reset"] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Style for the radio buttons */
+.selector {
+    display: flex;
+    align-items: center;
+}
+
+.selector input[type="radio"] {
+    margin-left: 10px;
+}
+
+.button input[type="submit"],
+.button input[type="reset"] {
+    width: auto;
+    margin: 10px 5px 10px 0;
     color: #009743;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 20rem;
+.login {
+    text-align: center;
+    margin-top: 10px;
 }
-selector{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-login{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-button{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+
+/* Additional styling for messages */
+span {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
 }
